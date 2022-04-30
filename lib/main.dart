@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:henry_portfolio_card/view/screens/homepage.dart';
 
 void main() {
   runApp(const MyApp());
@@ -13,9 +14,18 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Henry Le | Apps',
       theme: ThemeData(
-        scaffoldBackgroundColor: Colors.black,
+        scaffoldBackgroundColor: const Color(0xFF232323),
+        iconTheme: const IconThemeData(
+          color: Color(0xFF6c6e71),
+        ),
+        hoverColor: Colors.black,
+        textButtonTheme: TextButtonThemeData(
+          style: ButtonStyle(
+            foregroundColor: MaterialStateProperty.all(Colors.white),
+          ),
+        ),
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: HomePage(),
     );
   }
 }
