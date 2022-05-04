@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:henry_portfolio_card/model/profile.dart';
 
 class HomePage extends StatelessWidget {
-  HomePage({Key? key}) : super(key: key);
+  HomePage({Key? key, required Profile? profileData})
+      : _profile = profileData!,
+        super(key: key);
 
-  final String _profileImage = 'assets/27880002.jpeg';
-  final String _firstName = 'Henry';
-  final String _lastName = 'Le';
+  final Profile _profile;
 
   final List<String> _linkNames = ['GitHub', 'LinkedIn', 'Email'];
   final List<String> _linkURL = ['a', 'b', 'c'];
@@ -31,10 +32,24 @@ class HomePage extends StatelessWidget {
               children: [
                 const Spacer(),
                 CircleAvatar(
-                  foregroundImage: AssetImage(_profileImage),
+                  foregroundImage:
+                      AssetImage(_profile.getProfileImageLocation!),
+                  radius: 80.0,
+                  minRadius: 60.0,
+                  maxRadius: 100.0,
                 ),
                 const Spacer(),
-                Text(_firstName + ' ' + _lastName),
+                Text(
+                  _profile.getFirstName! + ' ' + _profile.getLastName!,
+                  style: const TextStyle(
+                    fontSize: 48.0,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                Text(_profile.getShortProfileDescription!),
                 const Spacer(),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,

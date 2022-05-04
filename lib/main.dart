@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:henry_portfolio_card/model/my_profile_data.dart';
+import 'package:henry_portfolio_card/model/theme_data.dart';
 import 'package:henry_portfolio_card/view/screens/homepage.dart';
 
 void main() {
@@ -13,19 +15,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Henry Le | Apps',
-      theme: ThemeData(
-        scaffoldBackgroundColor: const Color(0xFF232323),
-        iconTheme: const IconThemeData(
-          color: Color(0xFF6c6e71),
-        ),
-        hoverColor: Colors.black,
-        textButtonTheme: TextButtonThemeData(
-          style: ButtonStyle(
-            foregroundColor: MaterialStateProperty.all(Colors.white),
-          ),
-        ),
+      theme: lightThemeData,
+      home: HomePage(
+        profileData: profileData,
       ),
-      home: HomePage(),
     );
   }
 }
