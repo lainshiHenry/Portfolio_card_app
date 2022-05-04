@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:henry_portfolio_card/controller/get_profile_links_list.dart';
 import 'package:henry_portfolio_card/model/profile.dart';
 
 class HomePage extends StatelessWidget {
@@ -9,22 +9,17 @@ class HomePage extends StatelessWidget {
 
   final Profile _profile;
 
-  final List<String> _linkNames = ['GitHub', 'LinkedIn', 'Email'];
-  final List<String> _linkURL = ['a', 'b', 'c'];
-  final List<FaIcon> _listIcons = [
-    const FaIcon(FontAwesomeIcons.github),
-    const FaIcon(FontAwesomeIcons.linkedin),
-    const FaIcon(FontAwesomeIcons.envelope),
-  ];
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
         child: Container(
-          color: Colors.white,
-          width: 400,
+          width: 320,
           height: 500,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(13.0),
+            color: const Color(0xFFF0F0F0),
+          ),
           child: Padding(
             padding: const EdgeInsets.all(48.0),
             child: Column(
@@ -35,44 +30,45 @@ class HomePage extends StatelessWidget {
                   foregroundImage:
                       AssetImage(_profile.getProfileImageLocation!),
                   radius: 80.0,
-                  minRadius: 60.0,
-                  maxRadius: 100.0,
                 ),
                 const Spacer(),
                 Text(
                   _profile.getFirstName! + ' ' + _profile.getLastName!,
                   style: const TextStyle(
-                    fontSize: 48.0,
+                    fontSize: 36.0,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                SizedBox(
-                  height: 10,
+                const SizedBox(
+                  height: 15,
                 ),
-                Text(_profile.getShortProfileDescription!),
+                Text(
+                  _profile.getShortProfileDescription!,
+                  textAlign: TextAlign.center,
+                  style: const TextStyle(fontStyle: FontStyle.italic),
+                ),
                 const Spacer(),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   // mainAxisSize: MainAxisSize.min,
-                  children: _listIcons,
+                  children: getProfileLinksList(context, _profile),
                 ),
               ],
             ),
           ),
         ),
       ),
-      bottomNavigationBar: SizedBox(
-        width: 400,
+      bottomNavigationBar: SafeArea(
         child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: List.generate(
-              _linkNames.length,
-              (index) => TextButton(
-                    child: Text(
-                      _linkNames[index],
-                    ),
-                    onPressed: () {},
-                  )),
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: const [
+            Text(
+              'Designed and Developed by Henry Le',
+              style: TextStyle(
+                color: Color(0xFFF0F0F0),
+              ),
+            ),
+          ],
         ),
       ),
     );
