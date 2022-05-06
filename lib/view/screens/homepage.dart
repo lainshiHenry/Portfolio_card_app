@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:henry_portfolio_card/controller/get_profile_links_list.dart';
 import 'package:henry_portfolio_card/model/profile.dart';
 
@@ -117,10 +118,14 @@ class HomePage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: const [
             Text(
-              'Designed and Developed by Henry Le',
+              'Designed and Developed by Henry Le. Made with Flutter ',
               style: TextStyle(
                 color: Color(0xFFF0F0F0),
               ),
+            ),
+            FaIcon(
+              FontAwesomeIcons.solidHeart,
+              color: Colors.red,
             ),
           ],
         ),
